@@ -1,0 +1,128 @@
+.summary-container {
+  max-width: 80vw;
+  min-width: 50vw;
+  margin: 2rem auto;
+  background-color: var(--white-main);
+  padding: 3rem 3rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.summary-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h2 {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--mono-dark-1);
+    margin: 0 0 1rem 0;
+  }
+
+  p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+  }
+}
+
+.summary-content {
+  .section-summary {
+    padding: 1.5rem;
+    border-radius: 8px;
+
+    h3 {
+      font-family: 'Gilroy', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--mono-dark-1);
+      margin: 0 0 1rem 0;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+
+    .fields-summary {
+      .field-summary {
+        margin-bottom: 0.75rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .field-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.5rem 0;
+
+          .field-label {
+            font-weight: 500;
+            color: #333;
+            flex: 0 0 40%;
+          }
+
+          .field-value {
+            flex: 1;
+            text-align: right;
+            color: #555;
+            font-weight: 400;
+
+            &.empty {
+              color: #999;
+              font-style: italic;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.summary-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.error-state {
+  text-align: center;
+  padding: 3rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: var(--white-main);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    color: #dc3545;
+    margin-bottom: 1rem;
+    font-family: 'Gilroy', sans-serif;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .summary-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .summary-content .section-summary .fields-summary .field-summary .field-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+
+    .field-label {
+      flex: none;
+    }
+
+    .field-value {
+      text-align: left;
+    }
+  }
+}

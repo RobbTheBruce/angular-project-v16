@@ -1,0 +1,19 @@
+<div class="requested-item-container" *ngIf="currentSection">
+  <app-dynamic-section
+    [section]="currentSection"
+    [requestId]="requestId"
+    [showPreviousButton]="true"
+    [showNextButton]="true"
+    [showSubmitButton]="false"
+    (next)="onNext($event)"
+    (previous)="onPrevious($event)">
+  </app-dynamic-section>
+</div>
+
+<div class="error-state" *ngIf="!currentSection">
+  <h2>Error: No schema section found</h2>
+  <p>Please start from the beginning.</p>
+  <app-button (clicked)="goToStart()">
+    Go to Start
+  </app-button>
+</div>

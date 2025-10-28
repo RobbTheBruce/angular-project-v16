@@ -1,0 +1,11 @@
+<div [class]="listClasses">
+    <ul class="list-container">
+        <li 
+            *ngFor="let item of items" 
+            [class]="getItemClasses(item)"
+            [routerLink]="item.path"
+            routerLinkActive="list-item--active">
+            {{ item.name }}
+        </li>
+    </ul>
+</div>

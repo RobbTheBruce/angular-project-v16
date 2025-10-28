@@ -1,0 +1,38 @@
+<div class="step-container">
+    <div class="step-header">
+        <h2>What do you need to purchase?</h2>
+    </div>
+
+    <div *ngIf="!schemasLoaded" class="loading-container">
+        <div class="loading-spinner"></div>
+        <p>Loading available options...</p>
+    </div>
+
+    <form *ngIf="schemasLoaded" [formGroup]="stepOneForm" (ngSubmit)="onNext()" class="step-form">
+        <div class="form-group">
+            <div class="radio-group" *ngIf="availableSchemas.length > 0">
+                <app-radio 
+                    formControlName="productType" 
+                    [options]="purchaseOptions">
+                </app-radio>
+            </div>
+            
+            <div *ngIf="availableSchemas.length === 0" class="error-message">
+                <p>No purchase options available. Please try refreshing the page.</p>
+            </div>
+        </div>
+
+        <div class="form-actions" *ngIf="availableSchemas.length > 0">
+            <app-button 
+                type="submit" 
+                variant="primary" 
+                size="large" 
+                textAlign="left" 
+                [loading]="isLoading"
+                [disabled]="stepOneForm.invalid || !schemasLoaded" 
+                (clicked)="onNext()">
+                Start
+            </app-button>
+        </div>
+    </form>
+</div>

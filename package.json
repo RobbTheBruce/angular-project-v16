@@ -1,6 +1,6 @@
 {
-  "name": "angular-project-v16",
-  "version": "0.0.0",
+  "name": "angular-test-project",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -27,6 +27,7 @@
     "@angular/cli": "^16",
     "@angular/compiler-cli": "^16.2.0",
     "@types/jasmine": "~4.3.0",
+    "angular-in-memory-web-api": "^0.16.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

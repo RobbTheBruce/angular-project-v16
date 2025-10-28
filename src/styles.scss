@@ -1,1 +1,113 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --brand-main: #1DB496;
+  --mono-dark-1: #26292D;
+  --white-main: #FFFFFF;
+  --background-main: #F5F5F5;
+  --mono-gray-3: #E5E5E5;
+  --brand-green-37: #1AA287;
+  --brand-secondary: #EAF0F0;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./assets/fonts/gilroy/Gilroy-Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./assets/fonts/gilroy/Gilroy-Extrabold.woff') format('woff');
+  font-weight: bold;
+  font-style: bold; 
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-main);
+  font-family: 'Gilroy', sans-serif;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  padding: 5em 2rem;
+  justify-content: center;
+}
+
+.form-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 2rem;
+}
+
+.step-form {
+  margin-top: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-control.error {
+  border-color: #e74c3c;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.error-state {
+  text-align: center;
+  padding: 3rem;
+  
+  h2 {
+    color: #dc3545;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: #666;
+    margin-bottom: 2rem;
+  }
+}

@@ -1,0 +1,41 @@
+<div class="summary-container" *ngIf="requestData && hasAnyData()">
+  <div class="summary-header">
+    <h2>Request Summary</h2>
+    <p>{{ requestData.title }}</p>
+  </div>
+
+  <div class="summary-content">
+    <div class="section-summary" *ngFor="let section of requestData.sections">
+      <h3>{{ section.title }}</h3>
+      
+      <div class="fields-summary">
+        <div class="field-summary" *ngFor="let field of section.fields">
+          <div class="field-row">
+            <span class="field-label">{{ field.label }}:</span>
+            <span class="field-value" 
+                  [class.empty]="!field.value && !field.default">
+              {{ getFieldDisplayValue(field) }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-actions">
+    <app-button 
+      variant="primary"
+      size="large"
+      (clicked)="onCreateNewRequest()">
+      Create New Request
+    </app-button>
+  </div>
+</div>
+
+<div class="error-state" *ngIf="!requestData || !hasAnyData()">
+  <h2>No Request Data Found</h2>
+  <p>Please create a new request.</p>
+  <app-button (clicked)="onCreateNewRequest()">
+    Create New Request
+  </app-button>
+</div>

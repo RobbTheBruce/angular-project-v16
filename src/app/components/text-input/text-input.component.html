@@ -1,0 +1,31 @@
+<div [class]="containerClasses">
+    <label [for]="inputId" class="text-input-label" *ngIf="label">{{ label }}</label>
+    <input
+        [id]="inputId"
+        [type]="type"
+        [value]="value"
+        [placeholder]="placeholder"
+        [disabled]="disabled"
+        [attr.maxlength]="maxLength || null"
+        [class]="inputClasses"
+        (input)="onInput($event)"
+        (blur)="onBlur()"
+    />
+    <div class="error-messages" *ngIf="control?.invalid && (control?.dirty || control?.touched)">
+        <div class="error-message" *ngIf="control?.errors?.['required']">
+            This field is required.
+        </div>
+        <div class="error-message" *ngIf="control?.errors?.['maxlength']">
+            Maximum length of {{ maxLength }} characters exceeded.
+        </div>
+        <div class="error-message" *ngIf="control?.errors?.['minlength']">
+            Minimum length of {{ control.errors!['minlength'].requiredLength }} characters required.
+        </div>
+        <div class="error-message" *ngIf="control?.errors?.['email']">
+            Please enter a valid email address.
+        </div>
+        <div class="error-message" *ngIf="control?.errors?.['pattern']">
+            Please enter a valid format.
+        </div>
+    </div>
+</div>

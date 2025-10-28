@@ -1,0 +1,69 @@
+.btn {
+  background-color: var(--brand-main);
+  color: var(--white-main);
+  padding: 8px 16px;
+  border-radius: 4.5px;
+  border: none;
+  font-family: 'Gilroy', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &--secondary {
+    background-color: transparent;
+    color: var(--mono-dark-1);
+    border: 1px solid var(--mono-gray-3);
+  }
+  &--large {
+    min-width: 147px;
+  }
+  &--text-left {
+    text-align: left;
+  }
+  &--text-center {
+    text-align: center;
+  }
+  &--text-right {
+    text-align: right;
+  }
+  &--full-width {
+    width: 100%;
+  }
+  &--transform-uppercase {
+    text-transform: uppercase;
+  }
+  &--transform-lowercase {
+    text-transform: lowercase;
+  }
+  &--disabled {
+    background-color: var(--mono-gray-3);
+    color: var(--mono-dark-1);
+    cursor: not-allowed;
+  }
+  
+  &--loading {
+    cursor: wait;
+    opacity: 0.7;
+  }
+}
+
+.btn__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn__spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

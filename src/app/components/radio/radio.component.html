@@ -1,0 +1,14 @@
+<div [class]="radioClasses">
+    <div class="radio-item {{ value === option.value ? 'selected' : '' }}" *ngFor="let option of options">
+        <input
+            type="radio"
+            [id]="option.id"
+            [name]="name"
+            [value]="option.value"
+            [checked]="value === option.value"
+            [disabled]="disabled"
+            (change)="onRadioChange(option.value)"
+        />
+        <label [for]="option.id">{{ option.label }}</label>
+    </div>
+</div> 

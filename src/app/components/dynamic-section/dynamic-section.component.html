@@ -1,0 +1,101 @@
+<div class="dynamic-section">
+  <div class="section-header">
+    <h2>{{ section.title }}</h2>
+    
+    <!-- State Indicator -->
+    <div class="save-state" [ngClass]="saveState.status">
+      <div class="save-icon" *ngIf="saveState.status === 'saving'">
+        <div class="spinner"></div>
+      </div>
+      <div class="save-icon saved" *ngIf="saveState.status === 'saved'">✓</div>
+      <div class="save-icon error" *ngIf="saveState.status === 'error'">⚠</div>
+      <span class="save-message">{{ saveState.message }}</span>
+    </div>
+  </div>
+
+  <form [formGroup]="sectionForm" class="section-form">
+    <div class="field-group" *ngFor="let field of section.fields">
+      
+      <!-- Text Input -->
+      <div class="form-group" *ngIf="field.type === 'text'">
+        <app-text-input 
+          [formControlName]="field.id"
+          [label]="field.label"
+          [placeholder]="field.label"
+          [control]="getFormControl(field.id.toString())">
+        </app-text-input>
+      </div>
+
+      <!-- Number Input -->
+      <div class="form-group" *ngIf="field.type === 'number'">
+        <app-text-input 
+          [formControlName]="field.id"
+          type="number"
+          [label]="field.label"
+          [placeholder]="field.label"
+          [control]="getFormControl(field.id.toString())">
+        </app-text-input>
+      </div>
+
+      <!-- Radio Input -->
+      <div class="form-group" *ngIf="field.type === 'radio'">
+        <label class="field-label">{{ field.label }} <span class="required" *ngIf="field.required">*</span></label>
+        <app-radio 
+          [formControlName]="field.id"
+          [name]="'field_' + field.id"
+          [options]="getFieldRadioOptions(field)">
+        </app-radio>
+        <div class="error-message" *ngIf="hasError(field.id, 'required')">
+          {{ getErrorMessage(field) }}
+        </div>
+      </div>
+
+      <!-- Checkbox Input -->
+      <div class="form-group toggle-group" *ngIf="field.type === 'toggle'">
+        <label class="toggle-label">
+          <input 
+            type="checkbox"
+            [formControlName]="field.id"
+            class="toggle-input">
+          <span class="toggle-slider"></span>
+          <span class="toggle-text">{{ field.label }}</span>
+        </label>
+      </div>
+
+    </div>
+
+    <!-- Next Prev Buttons -->
+    <div class="form-actions">
+      <app-button 
+        *ngIf="showPreviousButton"
+        type="button"
+        variant="secondary"
+        transform="uppercase"
+        (clicked)="onPrevious()">
+        Previous
+      </app-button>
+
+      <app-button 
+        *ngIf="showNextButton"
+        type="button"
+        variant="primary"
+        transform="uppercase"
+        [disabled]="sectionForm.invalid"
+        (clicked)="onNext()">
+        Next
+      </app-button>
+
+      <app-button 
+        *ngIf="showSubmitButton"
+        type="button"
+        variant="primary"
+        transform="uppercase"
+        [disabled]="sectionForm.invalid || isSubmitting"
+        [loading]="isSubmitting"
+        (clicked)="onSubmit()">
+        <span *ngIf="!isSubmitting">Submit</span>
+        <span *ngIf="isSubmitting">Submitting...</span>
+      </app-button>
+    </div>
+  </form>
+</div>
