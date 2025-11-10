@@ -31,4 +31,10 @@
             border-color: var(--brand-main);
         }
     }
+
+    @media (max-width: 768px) {
+    
+        flex-direction: column;
+        
+    }
 }
